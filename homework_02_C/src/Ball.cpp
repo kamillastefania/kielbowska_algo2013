@@ -16,6 +16,8 @@ Ball::Ball () {
     c.g = ofRandom(0);
     c.b = ofRandom(150);
     
+    velocity=ofVec2f(20, 20);
+    
 }
 
 void Ball::update() {
@@ -24,17 +26,17 @@ void Ball::update() {
     pos += velocity;
     
     if (pos.y > ofGetWindowHeight()-(r)) {
-        pos.y = ofGetWindowHeight()-(r);
+        pos.y = ofGetWindowHeight()-(r+1);
         velocity.y *= -0.9;
     }
     
     if (pos.x > ofGetWindowWidth() - r) {
-        pos.x = ofGetWindowWidth() - r;
+        pos.x = ofGetWindowWidth() - (r+1);
         velocity.x *= -0.9;
     }
     
     if (pos.x < ofGetWindowWidth() - r) {
-        pos.x = ofGetWindowWidth() - r;
+        pos.x = ofGetWindowWidth() - (r+1);
         velocity.x *= -0.5;
     }
 }

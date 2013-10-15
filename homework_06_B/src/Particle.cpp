@@ -133,6 +133,7 @@ void particle::update( const ofImage &img, ofVec2f mousePos ){
 	vel = vel + frc;
 	pos = pos + vel;
     
+    ofClamp(1000, 1, 500);
     radius = img.getColor(pos.x, pos.y).r / 255.0 * 3.0;
     
     mass = radius * radius * 0.0001f + 0.01f;
@@ -142,7 +143,7 @@ void particle::update( const ofImage &img, ofVec2f mousePos ){
 void particle::draw(){
     
     ofSetColor(23.0 * (pos.y / ofGetWindowHeight()), 242, 188);
-    ofCircle(pos.x, pos.y, 3);
+    ofCircle(pos.x, pos.y, 1.5);
 }
 
 //------------------------------------------------------------

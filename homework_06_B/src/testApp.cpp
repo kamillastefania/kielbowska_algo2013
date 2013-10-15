@@ -14,7 +14,7 @@ void testApp::setup(){
     ofSetBackgroundAuto(false);
 
 	
-	for (int i = 0; i < 1000; i++){
+	for (int i = 0; i < 5000; i++){
 		particle myParticle;
 		myParticle.setInitialCondition(ofRandom(0,1000),ofRandom(0,1000),0,0);
 		// more interesting with diversity :)
@@ -34,8 +34,8 @@ void testApp::update(){
 		particles[i].addAttractionForce(mouseX, mouseY, 1000, 0.1);
 		particles[i].addRepulsionForce(mouseX, mouseY, 60, 1);
 		
-        //		particles[i].addCounterClockwiseForce(mouseX, mouseY, 1000, 0.1);
-        //		particles[i].addClockwiseForce(mouseX, mouseY, 200, 1);
+        particles[i].addCounterClockwiseForce(mouseX, mouseY, 1000, 0.5);
+        particles[i].addClockwiseForce(mouseX, mouseY, 200, 1.5);
 		
 		//particles[i].addForce(0,0.04);  // gravity
 		particles[i].addDampingForce();
@@ -59,7 +59,10 @@ void testApp::draw(){
 //    ofSetColor(semiTransparent);
 //    ofRect(0,0, ofGetWindowWidth(), ofGetWindowHeight() );
 
+
     ofBackgroundGradient(ofColor(0,0,0,10), ofColor(0,0,0,10), OF_GRADIENT_CIRCULAR);
+    
+//    sampler.draw(50, 50);
     
 	for (int i = 0; i < particles.size(); i++){
 		particles[i].draw();
